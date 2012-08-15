@@ -111,7 +111,7 @@ class GeoNamesTestCase(unittest.TestCase):
 class DataScienceToolkitTestCase(unittest.TestCase):
     def setUp(self):
         from geopy.geocoders.dstk import DataScienceToolkit
-        self.geocoder = DataScienceToolkit(domain='192.168.10.23')
+        self.geocoder = DataScienceToolkit()
 
     # Only supports address searching
     test_basic_address = _basic_address_test
