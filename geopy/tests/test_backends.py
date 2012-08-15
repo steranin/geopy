@@ -108,6 +108,14 @@ class GeoNamesTestCase(unittest.TestCase):
     # Does not do any address searching.
     test_placename = _placename_test
 
+class DataScienceToolkitTestCase(unittest.TestCase):
+    def setUp(self):
+        from geopy.geocoders.dstk import DataScienceToolkit
+        self.geocoder = DataScienceToolkit(domain='192.168.10.23')
+
+    # Only supports address searching
+    test_basic_address = _basic_address_test
+
 BASIC_TESTCASES = [GoogleTestCase, BingTestCase, DotUSTestCase, YahooTestCase]
 
 # geonames does not actually test against addresses (just place names)
@@ -139,6 +147,7 @@ def get_suite():
     tests.append(OpenMapQuestTestCase('test_basic_address'))
     tests.append(OpenMapQuestTestCase('test_placename'))
     tests.append(GeoNamesTestCase('test_placename'))
+    tests.append(DataScienceToolkitTestCase('test_basic_address'))
     
     return unittest.TestSuite(tests)
 
